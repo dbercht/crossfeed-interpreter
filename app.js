@@ -1,2 +1,2 @@
-var app = angular.module('rugged-billing', []);
+var app = angular.module('crossfeed', []);
 

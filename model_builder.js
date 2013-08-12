@@ -2,7 +2,7 @@
   titleRegex = /^~([a-zA-Z0-9]+)?/;
   typeRegex = /(amrap|rft|afap|emotm|emom|(\d*(-\d+)+))/;
   timeRegex = /(((\d+)(m|min|minute|minutes|s|sec|secs|secods))|((?:\d*:)?\d*:\d{1,2}))/;
-  roundsRegex = /\d+(\+\d+)?(rounds|r)?/;
+  roundsRegex = /(\d+(\+\d+)?)(rounds|r)?/;
 
   function buildPost(post) {
     var blurbs = post.split(' ');
@@ -33,21 +33,27 @@
   function appendBlurb(blurb, post){
     blurb = blurb.toLowerCase();
     var title = runRegex(titleRegex, blurb);
-    blurb.replace(titleRegex, "");
     if (title !== null) {
       post.title = setOrNull(title[1]);
+      blurb.replace(titleRegex, "");
     }
     
     var type = runRegex(typeRegex, blurb);
     if (type !== null) {
-      console.info(type);
       post.type = type[1];
+      blurb.replace(typeRegex, "");
     }
-      console.info(post.type);
 
     var time = runRegex(timeRegex, blurb);
     if (time !== null) {
       post.time = buildTime(time);
+      blurb.replace(timeRegex, "");
+    }
+
+    var rounds = runRegex(roundsRegex, blurb);
+    if (rounds !== null) {
+      post.rounds = rounds[1];
+      blurb.replace(roundsRegex, "");
     }
     return post;
   }
@@ -101,7 +107,7 @@
   function newPost() {
     var post =  {
       time: "00:00",
-      rounds: "",
+      rounds: 0,
       reps: 0,
       title: "",
       type: "",
