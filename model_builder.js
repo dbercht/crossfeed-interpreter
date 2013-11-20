@@ -1,4 +1,4 @@
-  exerciseRegex = /(e|o)?(\d+[a-z\"\']{0,2})?#(([a-zA-Z\&\+]+)(\d*)?x([\d\+]*)([a-zA-Z]{1,2}#?)?|([a-zA-Z\&]+))/;
+  exerciseRegex = /(e|o)?(\d+[a-z\"\']{0,3})?#(([a-zA-Z\&\+]+)(\d*)?x([\d\+]*)([a-zA-Z]{1,3}#?)?|([a-zA-Z\&]+))/;
   titleRegex = /^~([a-zA-Z0-9]+)?/;
   typeRegex = /(amrap|rft|afap|emotm|emom|(\d*(-\d+)+))/;
   timeRegex = /(((\d+)(m|min|minute|minutes|s|sec|secs|secods))|((?:\d*:)?\d*:\d{1,2}))/;
